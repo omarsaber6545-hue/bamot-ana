@@ -1,0 +1,17 @@
+{
+  "guilds": {
+    "1528611350337818695": {
+      "guild_id": "1528611350337818695",
+      "channel_id": null,
+      "prayer_channel_id": "1533225291194044668",
+      "azkar_channel_id": "1533225383070273687",
+      "daily_channel_id": null,
+      "voice_channel_id": "1533225434324668506",
+      "role_id": "1528611350337818695",
+      "city": "Cairo",
+      "country": "Egypt",
+      "timezone": "Africa/Cairo",
+      "is_active": 1
+    }
+  }
+}
