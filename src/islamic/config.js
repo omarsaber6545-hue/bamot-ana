@@ -11,10 +11,16 @@ module.exports = {
   
   // 24/7 Live Radio Quran Streams
   quranRadioStreams: [
-    { name: 'إذاعة القرآن الكريم من القاهرة', url: 'https://stream.radiojar.com/8svhky00y0uvw' },
-    { name: 'إذاعة عبدالباسط عبدالصمد', url: 'https://backup.qurango.net/radio/abdulbasit_abdulsamad_mojawwad' },
-    { name: 'إذاعة مشاري العفاسي', url: 'https://backup.qurango.net/radio/mishary_alafasi' },
-    { name: 'إذاعة محمود خليل الحصري', url: 'https://backup.qurango.net/radio/mahmoud_khalil_alhussary' }
+    { name: 'إذاعة الشيخ مشاري العفاسي', url: 'https://backup.qurango.net/radio/mishary_alafasi' },
+    { name: 'إذاعة القرآن الكريم من القاهرة', url: 'https://stream.zeno.fm/f3wvbb1v818uv' },
+    { name: 'إذاعة الشيخ عبدالباسط عبدالصمد (المجود)', url: 'https://backup.qurango.net/radio/abdulbasit_abdulsamad_mojawwad' },
+    { name: 'إذاعة الشيخ محمود خليل الحصري', url: 'https://backup.qurango.net/radio/mahmoud_khalil_alhussary' },
+    { name: 'إذاعة الشيخ محمد صديق المنشاوي (المجود)', url: 'https://backup.qurango.net/radio/mohammed_siddiq_alminshawi_mojawwad' },
+    { name: 'إذاعة الشيخ ماهر المعيقلي', url: 'https://backup.qurango.net/radio/maher_al_muaiqly' },
+    { name: 'إذاعة الشيخ سعود الشريم', url: 'https://backup.qurango.net/radio/saud_alshuraim' },
+    { name: 'إذاعة الشيخ ياسر الدوسري', url: 'https://backup.qurango.net/radio/yasser_aldosari' },
+    { name: 'إذاعة الشيخ سعد الغامدي', url: 'https://backup.qurango.net/radio/saad_alghamdi' },
+    { name: 'إذاعة الشيخ أبو بكر الشاطري', url: 'https://backup.qurango.net/radio/shatri' }
   ],
   
   colors: {

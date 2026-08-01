@@ -2,6 +2,11 @@ const { SlashCommandBuilder, PermissionFlagsBits, ChannelType, EmbedBuilder } = 
 const quranVoiceService = require('../services/quranVoiceService');
 const config = require('../config');
 
+const choices = config.quranRadioStreams.slice(0, 10).map((s, index) => ({
+  name: s.name,
+  value: index
+}));
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('voice_quran')
@@ -21,12 +26,7 @@ module.exports = {
           option.setName('station')
             .setDescription('اختر إذاعة القرآن الكريم')
             .setRequired(false)
-            .addChoices(
-              { name: 'إذاعة القرآن الكريم من القاهرة', value: 0 },
-              { name: 'إذاعة الشيخ عبدالباسط عبدالصمد', value: 1 },
-              { name: 'إذاعة الشيخ مشاري العفاسي', value: 2 },
-              { name: 'إذاعة الشيخ محمود خليل الحصري', value: 3 }
-            )
+            .addChoices(...choices)
         )
     )
     .addSubcommand(subcommand =>
@@ -49,8 +49,8 @@ module.exports = {
 
     if (subcommand === 'join') {
       const channel = interaction.options.getChannel('channel');
-      const stationIndex = interaction.options.getInteger('station') || 0;
-      const station = config.quranRadioStreams[stationIndex];
+      const stationIndex = interaction.options.getInteger('station') ?? 0;
+      const station = config.quranRadioStreams[stationIndex] || config.quranRadioStreams[0];
 
       await interaction.deferReply();
 

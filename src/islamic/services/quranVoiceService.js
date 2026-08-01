@@ -1,3 +1,6 @@
+const { spawn } = require("child_process");
+const ffmpeg = require("ffmpeg-static");
+const prism = require('prism-media');
 const { 
   joinVoiceChannel, 
   createAudioPlayer, 
@@ -45,17 +48,39 @@ class QuranVoiceService {
 
       const playStream = () => {
         try {
-          console.log(`[QuranVoice] 📻 Streaming 24/7 Quran Radio (${selectedStream.name}) in guild ${guildId}...`);
-          const resource = createAudioResource(selectedStream.url, {
-            inputType: StreamType.Arbitrary,
-            inlineVolume: false
+          console.log(`[QuranVoice] 📻 Streaming 24/7 Quran Radio (${selectedStream.name})`);
+
+          const ffmpegProcess = spawn(ffmpeg, [
+            "-reconnect", "1",
+            "-reconnect_streamed", "1",
+            "-reconnect_delay_max", "5",
+            "-i", selectedStream.url,
+            "-f", "s16le",
+            "-ar", "48000",
+            "-ac", "2",
+            "pipe:1"
+          ]);
+
+          ffmpegProcess.stderr.on("data", data => {
+            console.log("[FFMPEG]", data.toString());
           });
+
+          ffmpegProcess.on("error", err => {
+            console.error("[FFMPEG ERROR]", err);
+          });
+
+          const resource = createAudioResource(ffmpegProcess.stdout, {
+            inputType: StreamType.Raw
+          });
+
           player.play(resource);
+
         } catch (err) {
-          console.error(`[QuranVoice] ❌ Error creating audio resource:`, err.message);
+          console.error(err);
           setTimeout(playStream, 5000);
         }
       };
+
 
       connection.subscribe(player);
 
